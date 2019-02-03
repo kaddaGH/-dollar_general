@@ -3,8 +3,8 @@ require './lib/headers'
  pages << {
    page_type: 'listing',
    url: 'https://www.dollargeneral.com/food/beverages/energy-drinks.html',
-   fetch_type: 'fullbrowser',
-   #headers: ReqHeaders::SEARCH_PAGE_HEADER_REQ,
+   fetch_type: 'browser',
+   headers: ReqHeaders::SEARCH_PAGE_HEADER_REQ,
    vars: {
      input_type: 'taxonomy',
      search_term: '-',
