@@ -7,6 +7,8 @@ products = body.search('li.product-item a.product') rescue []
 
 scrape_url_nbr_products = body.at('p.toolbar-amount').at('span.toolbar-number').children.text.to_i rescue 0
 current_page = page['vars']['page']
+headers = ReqHeaders::SEARCH_PAGE_HEADER_REQ
+headers['Cookie'] = page['response_cookie']
 
 if current_page == 1
   scrape_url_nbr_prod_pg1 = products.length
@@ -24,7 +26,7 @@ products.each_with_index do |product, i|
       method: 'GET',
       url: product.attr("href"),
       fetch_type: 'fullbrowser',
-      headers: ReqHeaders::SEARCH_PAGE_HEADER_REQ,
+      headers: headers,
       vars: {
           'input_type' => page['vars']['input_type'],
           'search_term' => page['vars']['search_term'],
@@ -47,7 +49,7 @@ if not next_page.nil?
       method: 'GET',
       url: next_page.attr('href'),
       fetch_type: 'fullbrowser',
-      headers: ReqHeaders::SEARCH_PAGE_HEADER_REQ,
+      headers: headers,
       vars: {
           'input_type' => page['vars']['input_type'],
           'search_term' => page['vars']['search_term'],
