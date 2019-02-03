@@ -24,7 +24,7 @@ products.each_with_index do |product, i|
   pages << {
       page_type: 'product_details',
       method: 'GET',
-      url: product.attr("href") + "?search=#{page['vars']['search_term']}+&rank=#{i + 1}",
+      url: product.attr("href"),# + "?search=#{page['vars']['search_term']}+&rank=#{i + 1}",
       fetch_type: 'fullbrowser',
       #headers: headers,
       vars: {
