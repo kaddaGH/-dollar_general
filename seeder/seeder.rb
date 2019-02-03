@@ -4,7 +4,7 @@ require './lib/headers'
    page_type: 'listing',
    url: 'https://www.dollargeneral.com/food/beverages/energy-drinks.html',
    fetch_type: 'fullbrowser',
-   headers: ReqHeaders::SEARCH_PAGE_HEADER_REQ,
+   #headers: ReqHeaders::SEARCH_PAGE_HEADER_REQ,
    vars: {
      input_type: 'taxonomy',
      search_term: '-',
@@ -15,9 +15,9 @@ require './lib/headers'
 ['Red bull', 'RedBull', 'Energy Drink', 'Energy Drinks'].each do |search_term|
   pages << {
       page_type: 'products_listing',
-      url: "https://www.dollargeneral.com/catalogsearch/result/?q=#{search_term.gsub(' ', '+')}",
+      url: "https://www.dollargeneral.com/catalogsearch/result/?q=#{search_term}",
       fetch_type: 'fullbrowser',
-      headers: ReqHeaders::SEARCH_PAGE_HEADER_REQ,
+      #headers: ReqHeaders::SEARCH_PAGE_HEADER_REQ,
       vars: {
           input_type: 'Search',
           search_term: search_term,
