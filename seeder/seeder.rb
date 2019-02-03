@@ -22,7 +22,7 @@ headers = {
   pages << {
       page_type: 'products_listing',
       url: "https://www.dollargeneral.com/catalogsearch/result/?q=#{search_term.gsub(' ', '+')}",
-      #fetch_type: 'browser',
+      fetch_type: 'browser',
       headers:headers,
       vars: {
           input_type: 'Search',
