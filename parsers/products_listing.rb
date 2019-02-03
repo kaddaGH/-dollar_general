@@ -25,7 +25,7 @@ products.each_with_index do |product, i|
       page_type: 'product_details',
       method: 'GET',
       url: product.attr("href"),
-      fetch_type: 'browser',
+      fetch_type: 'fullbrowser',
       headers: headers,
       vars: {
           'input_type' => page['vars']['input_type'],
@@ -48,7 +48,7 @@ if not next_page.nil?
       page_type: 'products_listing',
       method: 'GET',
       url: next_page.attr('href'),
-      fetch_type: 'browser',
+      fetch_type: 'fullbrowser',
       headers: headers,
       vars: {
           'input_type' => page['vars']['input_type'],
