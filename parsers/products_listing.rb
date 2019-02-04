@@ -1,12 +1,7 @@
 require './lib/headers'
 body = Nokogiri.HTML(content)
 
-phantomjscloud_api_key = 'ak-4grtj-aha4b-1vh2t-be9b8-psnv0'
-phantomjscloud_api_url = 'http://PhantomJScloud.com/api/browser/v2/'+phantomjscloud_api_key+'/'
-headers = {'content-type'=>'application/json'}
-
-
-
+render_api_url = 'https://api.prerender.com/render?token=v5FvYt7VfAo0W4dIO0ly&url='
 products = body.search('li.product-item a.product') rescue []
 
 
@@ -24,18 +19,11 @@ next_page = body.at_css(".pages-item-next a")
 
 
 products.each_with_index do |product, i|
-  request_body={
-      "url"=> product.attr("href")+ "?search=#{page['vars']['search_term']}+&rank=#{i + 1}",
-      "renderType"=>"html"
-  }
-
 
   pages << {
       page_type: 'product_details',
-      method: 'POST',
-      url: phantomjscloud_api_url,
-      headers:headers,
-      body:request_body.to_json,
+      method: 'GET',
+      url: render_api_url+product.attr("href")+ "?search=#{page['vars']['search_term']}+&rank=#{i + 1}",
       vars: {
           'input_type' => page['vars']['input_type'],
           'search_term' => page['vars']['search_term'],
@@ -52,17 +40,11 @@ end
 
 if not next_page.nil?
 
-  request_body={
-      "url"=> next_page.attr('href'),
-      "renderType"=>"html"
-  }
 
   pages << {
       page_type: 'products_listing',
-      method: 'POST',
-      url: phantomjscloud_api_url,
-      headers:headers,
-      body:request_body.to_json,
+      method: 'GET',
+      url: render_api_url+next_page.attr('href'),
       vars: {
           'input_type' => page['vars']['input_type'],
           'search_term' => page['vars']['search_term'],
