@@ -19,7 +19,7 @@ next_page = body.at_css(".pages-item-next a")
 
 
 products.each_with_index do |product, i|
-
+break
 
   pages << {
       page_type: 'product_details',
