@@ -2,7 +2,6 @@ body = Nokogiri.HTML(content)
 
 product = body.at_css('div.product-info-main')
 
-if product && body.at_css('meta[property="product:price:amount"]')
   id = body.at_css('div.product-info-stock-sku div.value').text
   title = body.at_css('h1.page-title > span').text
 
@@ -34,9 +33,11 @@ if product && body.at_css('meta[property="product:price:amount"]')
             title.split(' ').first
           end
 
-  image = body.at_css('meta[property="og:image"]')['content']
-  image = 'https://api.prerender.com/render?token=v5FvYt7VfAo0W4dIO0ly&url='+image
-  price = body.at_css('meta[property="product:price:amount"]')['content'].to_f
+  image = body.at_css('meta[property="og:image"]')['content'] rescue nil
+  if image.nil?
+    image = content[/(?<="img":")(.+?)(?=")/].gsub(/\\/,'') rescue ''
+  end
+  price = body.at_css('meta[property="product:price:amount"]')['content'].to_f rescue ''
   in_stock = if !body.at_css('div.product-info-stock-sku div.available').nil?
                '1'
              else
@@ -85,4 +86,4 @@ if product && body.at_css('meta[property="product:price:amount"]')
   result['_collection'] = 'products'
 
   outputs << result
-end
+
