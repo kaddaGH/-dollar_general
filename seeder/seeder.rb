@@ -2,7 +2,7 @@ render_api_url = 'https://api.prerender.com/render?token=v5FvYt7VfAo0W4dIO0ly&ur
  pages << {
    page_type: 'products_listing',
    method:'GET',
-   url: render_api_url+"https://www.dollargeneral.com/food/beverages/energy-drinks.html",
+   url: render_api_url+"https://www.dollargeneral.com/food/beverages/energy-drinks.html?p=2",
 
    vars: {
      input_type: 'taxonomy',
