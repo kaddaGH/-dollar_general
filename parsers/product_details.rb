@@ -35,6 +35,7 @@ if product && body.at_css('meta[property="product:price:amount"]')
           end
 
   image = body.at_css('meta[property="og:image"]')['content']
+  image = 'https://api.prerender.com/render?token=v5FvYt7VfAo0W4dIO0ly&url='+image
   price = body.at_css('meta[property="product:price:amount"]')['content'].to_f
   in_stock = if !body.at_css('div.product-info-stock-sku div.available').nil?
                '1'

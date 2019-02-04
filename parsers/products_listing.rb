@@ -1,4 +1,3 @@
-require './lib/headers'
 require 'uri'
 body = Nokogiri.HTML(content)
 
