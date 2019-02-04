@@ -20,6 +20,10 @@ next_page = body.at_css(".pages-item-next a")
 
 products.each_with_index do |product, i|
 
+  if i<30
+    next 
+  end
+
   pages << {
       page_type: 'product_details',
       method: 'GET',
