@@ -25,6 +25,8 @@ if product && body.at_css('meta[property="product:price:amount"]')
   description = body.at_css('div.description > div.value').text
   description = description.split(/\<.*?\>/).map(&:strip).reject(&:empty?).join(' ').gsub(/\s,/,',')
   description = CGI::unescapeHTML(description)
+  description = description.gsub(/[\n\s]+/,' ')
+  description = description.gsub(/,/,'.')
 
   brand = if body.at_css('#product-attribute-specs-table td[data-th="Brand"]')
             body.at_css('#product-attribute-specs-table td[data-th="Brand"]').text
