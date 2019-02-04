@@ -20,11 +20,11 @@ next_page = body.at_css(".pages-item-next a")
 
 
 products.each_with_index do |product, i|
-  
+
   pages << {
       page_type: 'product_details',
       method: 'GET',
-      url: render_api_url+product.attr("href")+ "?search=#{page['vars']['search_term']}+&rank=#{i + 1}",
+      url: render_api_url+product.attr("href")+ "?search=#{page['vars']['search_term']}&rank=#{i + 1}&page=#{current_page}",
       vars: {
           'input_type' => page['vars']['input_type'],
           'search_term' => page['vars']['search_term'],
