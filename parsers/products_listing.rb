@@ -23,7 +23,7 @@ products.each_with_index do |product, i|
   pages << {
       page_type: 'product_details',
       method: 'GET',
-      url: product.attr("href")+ "?suid=#{page['vars']['search_term']}#{i + 1}#{current_page}",
+      url: render_api_url+URI::encode(product.attr("href")+ "?suid=#{page['vars']['search_term']}#{i + 1}#{current_page}"),
       vars: {
           'input_type' => page['vars']['input_type'],
           'search_term' => page['vars']['search_term'],
