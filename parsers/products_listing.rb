@@ -1,4 +1,5 @@
 require './lib/headers'
+require 'uri'
 body = Nokogiri.HTML(content)
 
 render_api_url = 'https://api.prerender.com/render?token=v5FvYt7VfAo0W4dIO0ly&url='
@@ -45,7 +46,7 @@ if not next_page.nil?
   pages << {
       page_type: 'products_listing',
       method: 'GET',
-      url: render_api_url+next_page.attr('href'),
+      url: render_api_url+URI::encode(next_page.attr('href')),
       vars: {
           'input_type' => page['vars']['input_type'],
           'search_term' => page['vars']['search_term'],

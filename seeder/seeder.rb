@@ -1,4 +1,5 @@
 require './lib/headers'
+require 'uri'
 # Taxonomy
 #
 
@@ -6,7 +7,7 @@ render_api_url = 'https://api.prerender.com/render?token=v5FvYt7VfAo0W4dIO0ly&ur
  pages << {
    page_type: 'products_listing',
    method:'GET',
-   url: render_api_url+"https://www.dollargeneral.com/food/beverages/energy-drinks.html?product_list_limit=96",
+   url: render_api_url+URI::encode("https://www.dollargeneral.com/food/beverages/energy-drinks.html?product_list_limit=96"),
 
    vars: {
      input_type: 'taxonomy',
