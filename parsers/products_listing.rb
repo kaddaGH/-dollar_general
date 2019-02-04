@@ -19,7 +19,7 @@ next_page = body.at_css(".pages-item-next a")
 
 
 products.each_with_index do |product, i|
- 
+
 
   pages << {
       page_type: 'product_details',
@@ -35,25 +35,5 @@ products.each_with_index do |product, i|
       }
 
   }
-
-end
-
-
-if not next_page.nil?
-
-
-  pages << {
-      page_type: 'products_listing',
-      method: 'GET',
-      url: render_api_url+CGI.escape(next_page.attr('href')),
-      vars: {
-          'input_type' => page['vars']['input_type'],
-          'search_term' => page['vars']['search_term'],
-          'SCRAPE_URL_NBR_PROD_PG1' => scrape_url_nbr_prod_pg1,
-          'page' => current_page + 1
-      }
-
-  }
-
 
 end
