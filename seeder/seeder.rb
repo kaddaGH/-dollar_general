@@ -16,6 +16,7 @@ render_api_url = 'https://api.prerender.com/render?token=v5FvYt7VfAo0W4dIO0ly&ur
  }
 
 ['Red bull', 'RedBull', 'Energy Drink', 'Energy Drinks'].each do |search_term|
+  break
 
   pages << {
       page_type: 'products_listing',
