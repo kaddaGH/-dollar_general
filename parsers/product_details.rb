@@ -62,7 +62,7 @@ product = body.at_css('div.product-info-main')
       SCRAPE_INPUT_SEARCH_TERM: page['vars']['search_term'],
       SCRAPE_INPUT_CATEGORY: page['vars']['input_type'] == 'taxonomy' ? 'Energy Drinks' : '-',
       SCRAPE_URL_NBR_PRODUCTS: page['vars']['SCRAPE_URL_NBR_PRODUCTS'],
-      SCRAPE_URL_NBR_PROD_PG1: page['vars']['SCRAPE_URL_NBR_PRODUCTS_PG1'],
+      SCRAPE_URL_NBR_PROD_PG1: page['vars']['SCRAPE_URL_NBR_PROD_PG1'],
       PRODUCT_BRAND: brand,
       PRODUCT_RANK: page['vars']['rank'],
       PRODUCT_PAGE: page['vars']['page'],
