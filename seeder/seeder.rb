@@ -1,7 +1,7 @@
 render_api_url = 'https://api.prerender.com/render?token=v5FvYt7VfAo0W4dIO0ly&url='
 
 
-['Energy Drink', 'Energy Drinks'].each do |search_term|
+['Energy Drink'].each do |search_term|
 
 
   pages << {
