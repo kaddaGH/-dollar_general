@@ -19,11 +19,11 @@ next_page = body.at_css(".pages-item-next a")
 
 
 products.each_with_index do |product, i|
-break
+
   pages << {
       page_type: 'product_details',
       method: 'GET',
-      url: render_api_url+product.attr("href")+ "?suid=#{page['vars']['search_term']}#{i + 1}#{current_page}",
+      url: product.attr("href")+ "?suid=#{page['vars']['search_term']}#{i + 1}#{current_page}",
       vars: {
           'input_type' => page['vars']['input_type'],
           'search_term' => page['vars']['search_term'],
@@ -37,9 +37,7 @@ break
 
 end
 
-#puts(pages.length)
 
-#abort('d')
 if not next_page.nil?
 
 
