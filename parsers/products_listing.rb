@@ -24,6 +24,7 @@ products.each_with_index do |product, i|
   pages << {
       page_type: 'product_details',
       method: 'GET',
+      force_fetch: true,
       url: render_api_url+URI::encode(product.attr("href")+ "?suid=#{page['vars']['search_term']}#{i + 1}#{current_page}"),
       vars: {
           'input_type' => page['vars']['input_type'],
@@ -45,6 +46,7 @@ if not next_page.nil?
   pages << {
       page_type: 'products_listing',
       method: 'GET',
+      force_fetch: true,
       url: render_api_url+CGI.escape(next_page.attr('href')),
       vars: {
           'input_type' => page['vars']['input_type'],

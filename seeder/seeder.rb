@@ -2,6 +2,7 @@ render_api_url = 'https://api.prerender.com/render?token=v5FvYt7VfAo0W4dIO0ly&ur
 pages << {
     page_type: 'products_listing',
     method:'GET',
+    force_fetch: true,
     url: render_api_url+"https://www.dollargeneral.com/food/beverages/energy-drinks.html",
 
     vars: {
@@ -15,6 +16,7 @@ pages << {
   pages << {
       page_type: 'products_listing',
       method:'GET',
+      force_fetch: true,
       url: render_api_url+"https://www.dollargeneral.com/catalogsearch/result/?q=#{search_term}",
       vars: {
           input_type: 'Search',
